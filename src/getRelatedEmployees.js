@@ -22,7 +22,7 @@ function getRelatedEmployees(managerId) {
   return objGerenciados.map((gerenciado) => `${gerenciado.firstName} ${gerenciado.lastName}`);
 }
 
-getRelatedEmployees('4b40a139-d4dc-4f09-822d-ec25e819a5ad');
+// getRelatedEmployees('4b40a139-d4dc-4f09-822d-ec25e819a5ad');
 // const actual = '4b40a139-d4dc-4f09-822d-ec25e819a5ad';
 // console.log(getRelatedEmployees(actual));
 
