@@ -8,8 +8,8 @@ function getEmployeeByName(employeeName) {
   return data.employees.find((em) => employeeName === em.firstName || employeeName === em.lastName);
 }
 
-console.log(getEmployeeByName());
-console.log(getEmployeeByName('Emery'));
-console.log(getEmployeeByName('Wishart'));
+// console.log(getEmployeeByName());
+// console.log(getEmployeeByName('Emery'));
+// console.log(getEmployeeByName('Wishart'));
 
 module.exports = getEmployeeByName;
