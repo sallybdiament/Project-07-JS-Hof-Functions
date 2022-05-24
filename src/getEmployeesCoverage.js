@@ -2,35 +2,32 @@ const data = require('../data/zoo_data');
 
 function getEmployee(parametro) {
   if (typeof parametro === 'object') {
-    const param = Object.values(parametro)[0];
-    // eslint-disable-next-line arrow-body-style
-    const pessoa = data.employees.filter((empl) => {
-      return empl.firstName === param || empl.lastName === param || empl.id === param;
-    });
-    return pessoa;
+    const p = Object.values(parametro)[0];
+    const pess = data.employees.filter((e) => e.firstName === p || e.lastName === p || e.id === p);
+    return pess;
   }
 }
 
 function getId(parametro) {
-  const pessoa = getEmployee(parametro);
-  return pessoa[0].id;
+  const pess = getEmployee(parametro);
+  return pess[0].id;
 }
 
 function getFullName(parametro) {
-  const pessoa = getEmployee(parametro);
-  return `${pessoa[0].firstName} ${pessoa[0].lastName}`;
+  const pess = getEmployee(parametro);
+  return `${pess[0].firstName} ${pess[0].lastName}`;
 }
 
 function getSpecies(parametro) {
-  const pessoa = getEmployee(parametro);
-  const idAnimals = pessoa[0].responsibleFor;
+  const pess = getEmployee(parametro);
+  const idAnimals = pess[0].responsibleFor;
   const animaisDoEmployee = data.species.filter((specie) => idAnimals.includes(specie.id));
   return animaisDoEmployee.map((animal) => animal.name);
 }
 
 function getLocation(parametro) {
-  const pessoa = getEmployee(parametro);
-  const idAnimals = pessoa[0].responsibleFor;
+  const pess = getEmployee(parametro);
+  const idAnimals = pess[0].responsibleFor;
   const animaisDoEmployee = data.species.filter((specie) => idAnimals.includes(specie.id));
   return animaisDoEmployee.map((animal) => animal.location);
 }
