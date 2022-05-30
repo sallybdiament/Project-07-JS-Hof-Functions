@@ -20,16 +20,24 @@ function mapComNomeDosAnimais() {
 
 function mapComNomeDosAnimaisSort() {
   return data.species.reduce((acc, specie) => {
-    acc[specie.location].push({ [specie.name]: (specie.residents.map((resident) => resident.name)).sort() });
+    acc[specie.location].push({ [specie.name]: (specie.residents.map((res) => res.name)).sort() });
     return acc;
   }, { NE: [], NW: [], SE: [], SW: [] });
 }
 
 // console.log(mapComNomeDosAnimaisSort().NE);
 
+// function mapComNomeDosAnimaisSexFemale(options) {
+//   return data.species.reduce((acc, specie) => {
+//     acc[specie.location].push({ [specie.name]: specie.residents.filter((resident) => resident.sex === options.sex).map((female) => female.name) });
+//     return acc;
+//   }, { NE: [], NW: [], SE: [], SW: [] });
+// }
+
 function mapComNomeDosAnimaisSexFemale(options) {
   return data.species.reduce((acc, specie) => {
-    acc[specie.location].push({ [specie.name]: specie.residents.filter((resident) => resident.sex === options.sex).map((female) => female.name) });
+    const residentsPorSex = specie.residents.filter((resident) => resident.sex === options.sex);
+    acc[specie.location].push({ [specie.name]: residentsPorSex.map((female) => female.name) });
     return acc;
   }, { NE: [], NW: [], SE: [], SW: [] });
 }
@@ -38,9 +46,8 @@ function mapComNomeDosAnimaisSexFemale(options) {
 
 function mapComNomeDosAnimaisSexFemaleSorted(options) {
   return data.species.reduce((acc, specie) => {
-    acc[specie.location].push({ [specie.name]: specie.residents.filter((resident) => {
-      return resident.sex === options.sex;
-    }).map((female) => female.name).sort() });
+    const residentsSex = specie.residents.filter((resident) => resident.sex === options.sex);
+    acc[specie.location].push({ [specie.name]: residentsSex.map((female) => female.name).sort() });
     return acc;
   }, { NE: [], NW: [], SE: [], SW: [] });
 }
